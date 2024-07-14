@@ -9,7 +9,6 @@ const createCurrentUser = async (req : Request , res: Response)=>{
             return res.status(200).send()
 
         }
-        console.log("here")
         const newUser = await new User( req.body )
         newUser.save();
         res.status(201).json(newUser.toObject());
@@ -22,7 +21,6 @@ const createCurrentUser = async (req : Request , res: Response)=>{
 const updateCurrentUser = async (req : Request , res: Response)=>{
     try{
         const { name ,adrresLine1 ,city , country } = req.body;
-        
         const newUser = await User.findByIdAndUpdate(req.userId ,{ name:name , addressLine1:adrresLine1 , city:city, country:country })
         if(!newUser){
            return res.status(404).json({message:"user not found"})
