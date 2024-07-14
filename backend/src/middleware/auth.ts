@@ -21,6 +21,7 @@ export const jwtCheck = auth({
 
 
 export const jwtParse = async (req :Request , res:Response, next:NextFunction)=>{
+  
     const { authorization } = req.headers;
     if(!authorization || !authorization.startsWith("Bearer ")){
       return res.status(401);
@@ -38,6 +39,7 @@ export const jwtParse = async (req :Request , res:Response, next:NextFunction)=>
 
       req.auth0Id= auth0Id as  string;
       req.userId = user._id.toString();
+      
       next();
 
     }catch(err){
