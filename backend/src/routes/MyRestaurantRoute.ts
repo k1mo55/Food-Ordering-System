@@ -31,5 +31,15 @@ router.get('/',
     MyRestaurantController.getMyCurrentRestaurant
 )
 
+router.put("/",
+    jwtCheck ,
+    jwtParse,
+    upload.single("imageFile"),
+    ValidateMyRestaurantRequest,
+    MyRestaurantController.updateMyRestaurant
+);
+
+
+
 
 export default router
