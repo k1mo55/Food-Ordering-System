@@ -18,13 +18,12 @@ const orderSchema = new mongoose.Schema({
             
         }
     ],
-
     totalAmount:Number,
     status:{
         type:String,
-        enum:["placed","paid","inprogress","outForDelivery","delivered"],
+        enum:["placed","paid","inProgress","outForDelivery","delivered"],
     },
-    creatdAt:{ type:Date , default :Date.now }
+    createdAt:{ type:Date , default :Date.now }
 })
 
 const Order = mongoose.model("Order", orderSchema);

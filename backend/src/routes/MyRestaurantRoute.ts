@@ -23,12 +23,21 @@ router.post("/",
     ValidateMyRestaurantRequest,
     MyRestaurantController.createMyRestaurant
 );
-
+router.get("/order",
+    jwtCheck,
+    jwtParse,
+    MyRestaurantController.getMyRestaurantOrders
+)
 
 router.get('/',
     jwtCheck,
     jwtParse,
     MyRestaurantController.getMyCurrentRestaurant
+)
+router.patch("/order/:orderId/status",
+    jwtCheck,
+    jwtParse,
+    MyRestaurantController.updateOrderStatus
 )
 
 router.put("/",
